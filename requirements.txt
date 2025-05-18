@@ -1,7 +1,7 @@
 # Requirements for the CCPipeline Project
 
 # fake-data generation
-Faker==22.11.1
+Faker>=22.11.1
 
 # For CSV/JSON Conversion
-pandas==2.0.1
+pandas>=2.0.1
