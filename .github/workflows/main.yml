@@ -2,7 +2,7 @@ name: CICD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feature/pipeline-tests" ]
   pull_request:
     branches: [ "main" ]
 permissions:
@@ -32,12 +32,12 @@ jobs:
         run: python csvtojson.py
       
       - name: Tests
-        run:
+        run: python .\calculateTests.py 
 
       # lägg till create csv file (glöm inte pip install)
       # lägg till Create JSON file
       # Köra enhetstester     
-      #python .\calculateTests.py 
+      # python .\calculateTests.py 
       - name: Copy to dist
         run: |
           mkdir dist
