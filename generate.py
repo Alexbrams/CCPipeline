@@ -3,6 +3,7 @@ import random
 import string
 import datetime
 import csv
+from csvtojson import convert_csv
 
 fakeSweden = Faker(['sv_SE'])
 fakeNorway = Faker(['no_NO'])
@@ -144,5 +145,8 @@ with open('profiles1.csv', 'w', newline='',encoding='utf-8') as file:
         writer.writerow(field)
 
         antal = antal + 1
+
+if antal == 1000:
+    convert_csv()
 
 
