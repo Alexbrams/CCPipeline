@@ -9,10 +9,6 @@ def correctColumnCount(columncount):
     return False
 
 def correctProperties(missing):
-    props = ['Givenname', 'Surname', 'Streetaddress', 'City', 'Zipcode', 'Country',
-       'CountryCode', 'NationalId', 'TelephoneCountryCode', 'Telephone',
-       'Birthday', 'ConsentToContact']
-    
     if len(missing) == 0:
         return True
     return False
@@ -21,6 +17,21 @@ def failTest(number):
     if number > 2:
         return True
     return False
+
+properties = [
+    'Givenname', 
+    'Surname', 
+    'Streetaddress', 
+    'City', 
+    'Zipcode', 
+    'Country',
+    'CountryCode', 
+    'NationalId', 
+    'TelephoneCountryCode', 
+    'Telephone',
+    'Birthday', 
+    'ConsentToContact'
+    ]
 
 # A arrange
 # A act - anropar
