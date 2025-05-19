@@ -1,46 +1,68 @@
 import unittest
+from calculate import *
+import pandas as pd
 
-from calculate import canIBuyBeer
+class CheckFiles(unittest.TestCase):
 
+    csv_df = pd.read_csv('profiles1.csv')
+    json_df = pd.read_json('data.json')
+    
+    def csv_columns(self):
 
-class TestBeer(unittest.TestCase):
-    def test_when_17_and_on_krogen_should_not_be_allowed(self):
-        # ARRANGE
-        age = 17
-        loc = "krogen"
-        # ACT
-        c = canIBuyBeer(age,loc)
-        # ASSERT
-        #self.assertGreater(990)
-        self.assertFalse(c)
+        # Assert CSV column count to a variable.
+        columncount = self.csv_df.shape[1]
 
-    def test_when_18_and_on_krogen_should_be_allowed(self):
-        # ARRANGE
-        age = 18
-        loc = "krogen"
-        # ACT
-        c = canIBuyBeer(age,loc)
-        # ASSERT
-        self.assertTrue(c)
+        # Check if it is accepted.
+        t = correctColumnCount(columncount)
 
+        # If the check wasn't accepted, Fail the test. 
+        if t == False:
+            self.fail
 
-    def test_when_20_and_on_systemet_should_be_allowed(self):
-        # ARRANGE
-        age = 20
-        loc = "systemet"
-        # ACT
-        c = canIBuyBeer(age,loc)
-        # ASSERT
-        self.assertTrue(c)
+    def csv_rows(self):
 
-    def test_when_19_and_on_systemet_should_not_be_allowed(self):
-        # ARRANGE
-        age =19
-        loc = "systemet"
-        # ACT
-        c = canIBuyBeer(age,loc)
-        # ASSERT
-        self.assertFalse(c)
+        # Assert CSV row count to a variable.
+        rowcount = self.csv_df.shape[0]
+        
+        # Check if it is accepted.
+        t = correctRowCount(rowcount)
+        
+        # If the check wasn't accepted, Fail the test. 
+        if t == False:
+            self.fail
+
+    def json_properties(self):
+        
+        missing = [column for column in correctProperties.expected if column not in self.json_df.columns]
+
+        t = correctProperties(missing)
+
+        if t == False:
+            self.fail
+        
+    def json_rows(self):
+
+        # Assert JSON row count to a variable.
+        rowcount = self.json_df.shape[0]
+
+        # Check if it is accepted.
+        t = correctRowCount(rowcount)
+
+        # If the check wasn't accepted, Fail the test. 
+        if t == False:
+         self.fail
+        
+    def alwaysFail(self):
+        
+        # Assert 1 to number
+        number = 1
+
+        # Check if it is accepted.
+        t = failTest(number)
+
+        # If the check wasn't accepted, Fail the test. (Always)
+        if t == False:
+            self.fail
 
 if __name__ == '__main__':
     unittest.main()        
