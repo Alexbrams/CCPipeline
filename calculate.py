@@ -1,8 +1,25 @@
-def canIBuyBeer(age, location):
-    if age >= 18 and location == "krogen":
+def correctRowCount(rowcount):
+    if rowcount >= 900:
         return True
-    if age >= 20 and location == "systemet":
-        return True    
+    return False
+
+def correctColumnCount(columncount):
+    if columncount == 12:
+        return True
+    return False
+
+def correctProperties(missing):
+    props = ['Givenname', 'Surname', 'Streetaddress', 'City', 'Zipcode', 'Country',
+       'CountryCode', 'NationalId', 'TelephoneCountryCode', 'Telephone',
+       'Birthday', 'ConsentToContact']
+    
+    if len(missing) == 0:
+        return True
+    return False
+
+def failTest(number):
+    if number > 2:
+        return True
     return False
 
 # A arrange
