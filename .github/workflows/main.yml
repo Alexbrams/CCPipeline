@@ -43,7 +43,7 @@ jobs:
       - name: Run calculateTests.py with xmlrunner
         run: |
           mkdir -p test-reports
-          python -m xmlrunner discover -o test-reports
+          python -m xmlrunner calculateTests.py --output test-reports
 
       - name: Publish test report
         if: always()
