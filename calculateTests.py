@@ -54,7 +54,7 @@ class CheckFiles(unittest.TestCase):
         # Check if it is accepted.
         t = failTest(number)
 
-        self.assertFalse(t, "Extreme fail")
+        self.assertTrue(t, "Extreme fail")
 
 if __name__ == '__main__':
     unittest.main()       
