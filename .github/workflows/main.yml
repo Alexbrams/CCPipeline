@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies & test tools
         run: |
           pip install -r requirements.txt
-          pip install xmlrunner
+          pip install unittest-xml-reporting
 
       - name: Generate & convert data
         run: |
@@ -43,15 +43,15 @@ jobs:
       - name: Run calculateTests.py with xmlrunner
         run: |
           mkdir -p test-reports
-          python -m xmlrunner calculateTests.py --output test-reports
+          python -m xmlrunner discover -o test-reports
 
       - name: Publish test report
         if: always()
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         with:
           name: calculateTests
           path: test-reports/*.xml
-          reporter: junit
+          reporter: java-junit
 
       - name: Copy to dist
         run: |
