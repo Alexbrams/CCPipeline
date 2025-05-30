@@ -49,7 +49,7 @@ jobs:
         if: always()
         uses: dorny/test-reporter@v2
         with:
-          name: calculateTests
+          name: calculateTests.py
           path: test-reports/*.xml
           reporter: java-junit
 
